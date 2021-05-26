@@ -1,4 +1,4 @@
-PROJECT TITLE: DLinkedList
-PURPOSE OF PROJECT: Creating a Doubly Linked Circular List
-VERSION or DATE: v0.1
-AUTHORS: Xander Bailey
+A doubly linked list for Java, Made for my CS 162 class.
+Also contains a class to demonstrate the faster get method.
+
+Note: This is a BlueJ project.
