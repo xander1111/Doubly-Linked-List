@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Node
+comment1.params=data
+comment1.target=Node(java.lang.Object)
+comment1.text=\r\n\ Constructs\ a\ Node\ containing\ the\ specified\ data.\r\n
+comment2.params=
+comment2.target=java.lang.Object\ getData()
+comment2.text=\r\n\ Returns\ the\ data\ held\ in\ this\ Node.\r\n
+comment3.params=
+comment3.target=Node\ getNext()
+comment3.text=\r\n\ Gets\ the\ next\ Node\ in\ the\ list.\r\n
+comment4.params=
+comment4.target=Node\ getPrev()
+comment4.text=\r\n\ Gets\ the\ previous\ Node\ in\ the\ list.\r\n
+comment5.params=node
+comment5.target=void\ setNext(Node)
+comment5.text=\r\n\ Sets\ the\ next\ Node\ in\ the\ list.\r\n
+comment6.params=prev
+comment6.target=void\ setPrev(Node)
+comment6.text=\r\n\ Gets\ the\ previous\ Node\ in\ the\ list.\r\n
+comment7.params=
+comment7.target=void\ clear()
+comment7.text=\r\n\ Clears\ all\ instance\ fields.\r\n
+comment8.params=data
+comment8.target=void\ setData(java.lang.Object)
+comment8.text=\r\n\ Sets\ this\ nodes\ data.\r\n
+numComments=9

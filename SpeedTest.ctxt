@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=SpeedTest
+comment0.text=\r\n\ This\ is\ a\ class\ to\ test\ the\ speed\ of\ the\ DLinkedList's\ 2\ get\ method\ modes,\r\n\ One\ mode\ only\ looks\ forward\ until\ the\ index\ needed,\ the\ other\ can\r\n\ go\ from\ the\ back\ of\ the\ list,\ halfing\ the\ max\ time\ to\ get\ an\ item.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=SpeedTest()
+comment3.params=
+comment3.target=long\ normalGetTime()
+comment4.params=
+comment4.target=long\ fastGetTime()
+numComments=5
