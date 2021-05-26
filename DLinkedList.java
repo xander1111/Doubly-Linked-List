@@ -129,6 +129,7 @@ public class DLinkedList<E> implements ListInterface<E>
 
         toDelete.clear();
 
+        size--;
         return data;
     }
 
