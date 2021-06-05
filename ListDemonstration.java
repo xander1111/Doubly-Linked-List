@@ -1,22 +1,31 @@
+import java.nio.file.*;
+import java.util.*;
+
 public class ListDemonstration
 {
-    public static void main(String[] args) {
-        Person person1, person2, person3;
-        person1 = person2 = person3 = null;
+    public static void main(String[] args) throws Exception {
+        String filename = "demonstration.txt";
 
-        try {
-            person1 = new Person("firstName1", "lastName1", "000000001");
-            person2 = new Person("firstName2", "lastName2", "000000002");
-            person3 = new Person("firstName3", "lastName3", "000000003");
-        } catch (InvalidIDException e) {
-            System.err.println("And invalid ID was used when creating the Persons");
+        ArrayList<Person> personList = new ArrayList<>();
+
+        try (Scanner scanner = new Scanner(Paths.get(filename).toAbsolutePath())) {
+            while (scanner.hasNext()) {
+                String firstName = scanner.next();
+                String lastName = scanner.next();
+                String id = scanner.next();
+
+                personList.add(new Person(firstName, lastName, id));
+            }
+        } 
+        catch (Exception e) {
+            throw e;
         }
 
         DLinkedList<Person> linkedList = new DLinkedList<>();
 
-        linkedList.addLast(person1);
-        linkedList.addFirst(person2);
-        linkedList.add(person3, 1);
+        linkedList.addLast(personList.get(1));
+        linkedList.addFirst(personList.get(2));
+        linkedList.add(personList.get(3), 1);
 
         linkedList.delete(1);
         linkedList.deleteFirst();
@@ -25,14 +34,14 @@ public class ListDemonstration
 
         linkedList.clear();
 
-        linkedList.addFirst(person2);
-        linkedList.addFirst(person1);
+        linkedList.addFirst(personList.get(2));
+        linkedList.addFirst(personList.get(1));
 
-        linkedList.set(1, person3);
+        linkedList.set(1, personList.get(3));
 
-        System.out.println(linkedList.contains(person1));
-        System.out.println(linkedList.contains(person2));
-        System.out.println(linkedList.contains(person3));
+        System.out.println(linkedList.contains(personList.get(1)));
+        System.out.println(linkedList.contains(personList.get(2)));
+        System.out.println(linkedList.contains(personList.get(3)));
         System.out.println(linkedList.size());
     }
 }
