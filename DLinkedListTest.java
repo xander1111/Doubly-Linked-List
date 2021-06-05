@@ -5,16 +5,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-/**
- * The test class DLinkedListTest.
- *
- * @author  (your name)
- * @version (a version number or a date)
- */
 public class DLinkedListTest
 {
-    private DLinkedList<Integer> dLinkedL1;
-
+    private DLinkedList<Person> dLinkedL1;
+    private Person person1, person2, person3, person4, person5, person6;
     
 
     
@@ -34,10 +28,23 @@ public class DLinkedListTest
     @BeforeEach
     public void setUp()
     {
-        dLinkedL1 = new DLinkedList<Integer>();
-        dLinkedL1.addFirst(12);
-        dLinkedL1.addFirst(23);
-        dLinkedL1.addFirst(34);
+        dLinkedL1 = new DLinkedList<>();
+        person1 = person2 = person3 = null;
+
+        try {
+            person1 = new Person("firstName1", "lastName1", "000000001");
+            person2 = new Person("firstName2", "lastName2", "000000002");
+            person3 = new Person("firstName3", "lastName3", "000000003");
+            person4 = new Person("firstName4", "lastName4", "000000004");
+            person5 = new Person("firstName5", "lastName5", "000000005");
+            person6 = new Person("firstName6", "lastName6", "000000006");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        dLinkedL1.addFirst(person1);
+        dLinkedL1.addFirst(person2);
+        dLinkedL1.addFirst(person3);
     }
 
     /**
@@ -53,54 +60,63 @@ public class DLinkedListTest
     @Test
     public void testAddFirst()
     {
-        dLinkedL1.addFirst(1);
-        dLinkedL1.addFirst(2);
-        dLinkedL1.addFirst(3);
+        dLinkedL1.addFirst(person4);
+        dLinkedL1.addFirst(person5);
+        dLinkedL1.addFirst(person6);
         
-        assertEquals(3, dLinkedL1.get(0));
-        assertEquals(2, dLinkedL1.get(1));
-        assertEquals(1, dLinkedL1.get(2));
+        assertEquals(person6, dLinkedL1.getFast(0));
+        assertEquals(person5, dLinkedL1.getFast(1));
+        assertEquals(person4, dLinkedL1.getFast(2));
         
+        assertEquals(6, dLinkedL1.size());
     }
 
     @Test
     public void testAddLast()
     {
-        dLinkedL1.addLast(1);
-        dLinkedL1.addLast(2);
-        dLinkedL1.addLast(3);
+        dLinkedL1.addLast(person4);
+        dLinkedL1.addLast(person5);
+        dLinkedL1.addLast(person6);
         
-        assertEquals(1, dLinkedL1.get(3));
-        assertEquals(2, dLinkedL1.get(4));
-        assertEquals(3, dLinkedL1.get(5));
+        assertEquals(person4, dLinkedL1.getFast(3));
+        assertEquals(person5, dLinkedL1.getFast(4));
+        assertEquals(person6, dLinkedL1.getFast(5));
+        
+        assertEquals(6, dLinkedL1.size());
     }
 
     @Test
     public void testDeleteFirst()
     {
-        assertEquals(34, dLinkedL1.deleteFirst());
+        assertEquals(person3, dLinkedL1.deleteFirst());
         
-        assertEquals(23, dLinkedL1.get(0));
-        assertEquals(12, dLinkedL1.get(1));
+        assertEquals(person2, dLinkedL1.getFast(0));
+        assertEquals(person1, dLinkedL1.getFast(1));
+        
+        assertEquals(2, dLinkedL1.size());
         
     }
 
     @Test
     public void testDeleteLast()
     {
-        assertEquals(12, dLinkedL1.deleteLast());
+        assertEquals(person1, dLinkedL1.deleteLast());
         
-        assertEquals(34, dLinkedL1.get(0));
-        assertEquals(23, dLinkedL1.get(1));
+        assertEquals(person3, dLinkedL1.getFast(0));
+        assertEquals(person2, dLinkedL1.getFast(1));
+        
+        assertEquals(2, dLinkedL1.size());
     }
 
     @Test
     public void testDeleteIndex()
     {
-        assertEquals(23, dLinkedL1.delete(1));
+        assertEquals(person2, dLinkedL1.delete(1));
         
-        assertEquals(34, dLinkedL1.get(0));
-        assertEquals(12, dLinkedL1.get(1));
+        assertEquals(person3, dLinkedL1.getFast(0));
+        assertEquals(person1, dLinkedL1.getFast(1));
+        
+        assertEquals(2, dLinkedL1.size());
     }
 
     @Test
@@ -115,66 +131,75 @@ public class DLinkedListTest
         dLinkedL1.clear();
         
         assertEquals(0, dLinkedL1.size());
+
+        try {
+            dLinkedL1.getFast(0);
+        } catch (IndexOutOfBoundsException e) {
+            return;
+        }
+        fail("The list didn't throw an error when trying to access the first item");
     }
 
     @Test
     public void testContains()
     {
-        assertTrue(dLinkedL1.contains(12));
-        assertTrue(dLinkedL1.contains(23));
-        assertTrue(dLinkedL1.contains(34));
-        assertFalse(dLinkedL1.contains(742));
-        assertFalse(dLinkedL1.contains(22));
-        assertFalse(dLinkedL1.contains(33));
+        assertTrue(dLinkedL1.contains(person1));
+        assertTrue(dLinkedL1.contains(person2));
+        assertTrue(dLinkedL1.contains(person3));
+        assertFalse(dLinkedL1.contains(person4));
+        assertFalse(dLinkedL1.contains(person5));
+        assertFalse(dLinkedL1.contains(person6));
     }
     
 
     @Test
+    @SuppressWarnings("deprecation")
     public void testGetIndex()
     {
-        assertEquals(23, dLinkedL1.get(1));
+        assertEquals(person2, dLinkedL1.get(1));
     }
 
     @Test
     public void testGetFirst()
     {
-        assertEquals(34, dLinkedL1.getFirst());
+        assertEquals(person3, dLinkedL1.getFirst());
     }
 
     @Test
     public void testGetLast()
     {
-        assertEquals(12, dLinkedL1.getLast());
+        assertEquals(person1, dLinkedL1.getLast());
     }
 
     @Test
     public void testSet()
     {
-        dLinkedL1.set(2, 12321);
+        dLinkedL1.set(2, person4);
         
-        assertEquals(12321, dLinkedL1.getLast());
+        assertEquals(person4, dLinkedL1.getLast());
     }
 
     @Test
     public void testAddIndex()
     {
-        dLinkedL1.add(45, 1);
+        dLinkedL1.add(person4, 1);
         
-        assertEquals(45, dLinkedL1.get(1));
+        assertEquals(person4, dLinkedL1.getFast(1));
     }
 
     @Test
     public void testGetFast()
     {
         dLinkedL1.clear();
-        dLinkedL1.add(0);
-        dLinkedL1.add(1);
-        dLinkedL1.add(2);
-        dLinkedL1.add(3);
-        dLinkedL1.add(4);
+        dLinkedL1.add(person1);
+        dLinkedL1.add(person2);
+        dLinkedL1.add(person3);
+        dLinkedL1.add(person4);
+        dLinkedL1.add(person5);
+        dLinkedL1.add(person6);
         
-        assertEquals(3, dLinkedL1.getFast(3));
-        assertEquals(4, dLinkedL1.getFast(4));
+        assertEquals(person3, dLinkedL1.getFast(2));
+        assertEquals(person5, dLinkedL1.getFast(4));
     }
 }
 

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Person
+comment1.params=firstName\ lastName\ id
+comment1.target=Person(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Person\r\n
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment3.params=
+comment3.target=java.lang.String\ getLastName()
+comment4.params=
+comment4.target=java.lang.String\ getId()
+comment5.params=obj
+comment5.target=boolean\ equals(java.lang.Object)
+numComments=6

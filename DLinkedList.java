@@ -176,8 +176,10 @@ public class DLinkedList<E> implements ListInterface<E>
 
     /**
      * Gets the item at a specified index.
+     * @deprecated Use the {@code getFast(int index)} method instead.
      */
     @Override
+    @Deprecated 
     public E get(int index)
     {
         return getNode(index, false).getData();
