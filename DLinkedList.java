@@ -1,5 +1,8 @@
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public class DLinkedList<E> implements ListInterface<E>
+public class DLinkedList<E> implements ListInterface<E>, Iterable<E>
 {
     // The first Node in the list.
     private Node<E> first;
@@ -287,7 +290,42 @@ public class DLinkedList<E> implements ListInterface<E>
 
         return sb.toString().strip();
     }
+
+    /**
+     * Returns an iterator of each element in this list in order.
+     */
+    @Override
+    public Iterator<E> iterator()
+    {
+        return new Iterator<E>(){
+            private Node<E> next = first;
+            private boolean usedNext = false;
+
+            public boolean hasNext()
+            {
+                return next != null && (next != first || !usedNext);
+            }
+
+            public E next()
+            {
+                E data = next.getData();
+                next = next.getNext();
+                usedNext = true;
+                return data;
+            }
+        };
+    }
+
+    /**
+     * Preforms the given action on every item in the list in order of index.
+     */
+    public void forEach(Consumer<? super E> action)
+    {
+        Objects.requireNonNull(action);
+        Node<E> current = first;
+        for (int i = 0; i < size(); i++) {
+            action.accept(current.getData());
+            current = current.getNext();
+        }
+    }
 }
-
-
-

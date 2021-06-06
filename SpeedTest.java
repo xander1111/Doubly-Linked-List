@@ -26,6 +26,7 @@ public class SpeedTest
         }
     }
 
+    @SuppressWarnings("deprecation")
     public long normalGetTime()
     {
         long startTime = System.currentTimeMillis();
